@@ -1,0 +1,214 @@
+GET http://localhost:5000/
+
+
+###
+GET http://localhost:5000/test/users
+# AUTHENTICATIONS
+###
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+   "firstName":"Tina", 
+   "lastName":"Dukuly", 
+   "phoneNumber":"+231778786295",
+   "gender":"female",
+   "dateOfBirth":"May 20, 2000",
+   "email":"adukuly471@gmail.com", 
+   "password": "tina",
+   "role":"admin"
+}
+
+ 
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+ 
+   # "email": "morriskanneh.mk@gmail.com",
+   # "loginPassword": "morrismk"
+   #  "email": "egi25@gmail.com",
+   # "loginPassword": "Ecorise@12"
+{
+   "email": "egi25@gmail.com",
+   "password": "Ecorise@12"
+}
+
+
+###
+POST http://localhost:5000/api/auth/logout
+Content-Type: application/json
+
+
+# NEWS ROUTES
+###
+POST http://localhost:5000/api/news
+Content-Type: application/json
+
+{
+   "description": "Our team will be presenting innovative solutions at the upcoming Climate Action Summit.",
+   "newsImg": "/images/img-6.jpg",
+   "category":"",
+   "title":"Team present innovative solutions"
+}
+
+###
+ GET http://localhost:5000/api/news
+Content-Type: application/json
+
+
+# PROJECT
+
+###
+POST  http://localhost:5000/api/project
+Content-Type: application/json
+
+{
+ "description":"Ecorise Foundation has successfully completed the installation of solar panels in three rural communities, providing sustainable energy solutions to over 500 households.",  
+ "projectImg":"/images/img-7.jpg",
+  "title":"Installation of solar panel completed by Ecorise Founded"
+}
+
+###
+GET http://localhost:5000/api/project
+Content-Type: application/json
+
+
+###
+GET http://localhost:5000/api/project/single-project/Installation-of-solar-panel-completed-by-Ecorise-Founded
+Content-Type: application/json
+
+
+
+###
+get http://localhost:5000/api/landing
+
+# PARTNER ROUTES
+###
+POST http://localhost:5000/api/partners/register/
+Content-Type: application/json
+
+{
+   "partnerName":"Orange Liberia",
+   "partnerEmail":"adukuly471@gmail.com",
+   "description":"Encouraging the young generation about technology and its impact",
+   "logoUrl":"/images.logo.png",
+   "websiteUrl":"https://www.mohammedfoundation.com"
+}
+
+###
+POST http://localhost:5000/api/partners/register/admin
+Content-Type: application/json
+
+{
+   "partnerName":"World Food Program",
+   "partnerEmail":"marthaline1@gmail.com",
+   "firstName":"Mohammed",
+   "lastName":"Dukuly",
+   "email":"adukuly@gmail.com",
+   "password":"mohammed"
+}
+
+# adukuly@gmail.com
+
+###
+POST http://localhost:5000/api/partners/register/review-details
+Content-Type: application/json
+
+{ "partnerName":"Orange Liberia Foundation",
+   "partnerEmail":"adukuly471@gmail.com",
+   "description":"Encouraging the young generation about technology and its impact",
+   "logoUrl":"/images/logo.png",
+   "websiteUrl":"https://www.orange.com",
+   "firstName":"Mohammed",
+   "lastName":"Dukuly",
+   "email":"mohammedagdukuly10@mail.com",
+   "password":"mohammed"
+}
+###
+GET http://localhost:5000/api/partners
+Content-Type: application/json
+
+
+###
+PATCH http://localhost:5000/api/partners/1/status
+Content-Type: application/json
+
+# ACCEPT ONLY approve or reject
+{
+   "status": "reject" 
+}
+
+# VERIFY EVERY USER DATA
+###
+GET http://localhost:5000/api/authenticate/me
+Content-Type: application/json
+
+
+# USER CONTROLLER
+###
+GET http://localhost:5000/api/user/profile
+Content-Type: application/json
+
+
+###
+GET http://localhost:5000/api/user
+Content-Type: application/json
+
+# Kanneh egi25@gmail.com
+# morriskanneh.mk@gmail.com
+# SEARCH CONTROLLER TAKE QUERY q, PAGE NUMBER page and page
+###
+GET http://localhost:5000/api/search?q=ma&page=1
+Content-Type: application/json
+
+###
+GET http://localhost:5000/api/menu/
+Content-Type: application/json
+
+
+###
+GET http://localhost:5000/api/getInvolved
+
+
+# LIKES ROUTES
+
+###
+POST http://localhost:5000/api/likes
+Content-Type: application/json
+
+{
+   "contentId":"2",
+   "contentType":"project"
+}
+
+# 1,4
+
+###
+GET http://localhost:5000/api/likes?contentId=1&contentType=project&userId=4
+Content-Type: application/json
+
+
+
+###
+DELETE http://localhost:5000/api/likes?contentId=1&contentType=project
+Content-Type: application/json
+
+
+# USER CODE ACTIVATION
+###
+# verify routes
+POST http://localhost:5000/api/verify/activation-code
+Content-Type: application/json
+
+{
+   "email":"adukuly471@gmail.com",
+   "confrimCode":"104940"
+}
+###
+# verify routes
+POST http://localhost:5000/api/verify/resend-code
+Content-Type: application/json
+
+{
+   "email":"adukuly471@gmail.com"
+}
