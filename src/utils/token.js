@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { encryption } from "../encryption/cipher.js";
 import crypto from "crypto";
 
 dotenv.config();

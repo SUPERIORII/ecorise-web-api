@@ -1,6 +1,4 @@
 import crypto from "crypto";
-import dotenv from "dotenv";
-dotenv.config();
 
 // const algorithm = "aes-256-cbc";
 const algorithm = "aes-256-cbc";

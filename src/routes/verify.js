@@ -1,9 +1,6 @@
 import express from "express";
 const router = express.Router();
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 router.get("/me", (req, res) => {
   // const token = req.cookies.infoToken;

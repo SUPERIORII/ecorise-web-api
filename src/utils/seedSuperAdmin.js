@@ -1,8 +1,7 @@
 import db from "../database/pool.js";
 import bcrypt from "bcrypt";
-import dotenv from "dotenv";
 import { generateGradientColor } from "./generateGradient.js";
-dotenv.config();
+
 
 // DECLARE MENU LINK BASED ON ROLES
 

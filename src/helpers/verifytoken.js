@@ -1,10 +1,7 @@
 import jwt from "jsonwebtoken";
 import db from "../database/pool.js";
-import { config } from "dotenv";
 import { GET_UESR_BY_ID, GET_REFRESH_TOKEN } from "../database/queries.js";
 import { clearAuthCookies } from "./cookies.js";
-
-config();
 
 export const verifyAccess = async (accessToken) => {
   try {

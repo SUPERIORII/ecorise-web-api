@@ -1,8 +1,8 @@
+import "./src/config/env.js";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import http from "http";
-import dotenv from "dotenv";
 import helmet from "helmet";
 
 // 1. SYSTEM CONFIGURATION
@@ -28,7 +28,6 @@ import searchRoutes from "./src/routes/searchRoutes.js";
 import verifyCodeRoutes from "./src/routes/verifyRoutes.js";
 
 // 1. INITIALIZE CONFIGURATION
-dotenv.config();
 const app = express();
 const server = http.createServer(app);
 const io = initSocket(server);

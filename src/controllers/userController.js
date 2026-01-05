@@ -1,5 +1,4 @@
 import db from "../database/pool.js";
-import dotenv from "dotenv";
 import { verifyAccess } from "../helpers/verifytoken.js";
 import { clearAuthCookies, setAuthCookies } from "../helpers/cookies.js";
 import {
@@ -9,7 +8,6 @@ import {
 } from "../database/queries.js";
 import { createAccessToken, createRefreshToken } from "../utils/token.js";
 import { rotateRefreshToken } from "../helpers/rotateRefreshToken.js";
-dotenv.config();
 
 export const getAllUsers = async (req, res) => {
   try {

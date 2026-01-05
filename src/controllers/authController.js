@@ -5,7 +5,6 @@
  */
 import db from "../database/pool.js";
 import bcrypt from "bcrypt";
-import dotenv from "dotenv";
 import { loginSchema } from "../utils/validators.js";
 import { generateGradientColor } from "../utils/generateGradient.js";
 import {
@@ -20,8 +19,6 @@ import {
 } from "../database/queries.js";
 import { createAccessToken, createRefreshToken } from "../utils/token.js";
 import { clearAuthCookies, setAuthCookies } from "../helpers/cookies.js";
-
-dotenv.config();
 
 // Optional: set COOKIE_DOMAIN in Render env vars when frontend and backend are on subdomains
 // Example: ".your-domain.com" to share cookie across subdomains

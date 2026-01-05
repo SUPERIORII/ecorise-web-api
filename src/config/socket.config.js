@@ -1,9 +1,6 @@
 import { Server } from "socket.io";
 import cookie from "cookie";
 import jwt from "jsonwebtoken";
-import { config } from "dotenv";
-
-config();
 
 let io;
 

@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
 import db from "../database/pool.js";
 import { createTables } from "./createTables.js";
 
