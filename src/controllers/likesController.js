@@ -28,7 +28,11 @@ export const getLikes = async (req, res) => {
     });
   } catch (error) {
     console.log("Getting Likes Error:", error);
-    res.json("Internal Server Error");
+    res.json({
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
+    });
   }
 };
 
@@ -85,7 +89,7 @@ export const addDeleteLikes = async (req, res) => {
       contentId,
       updatedLikes: getUpdatedLike.rows,
       isLike: isLike,
-      userId: verifyToken.userId
+      userId: verifyToken.userId,
     });
 
     // SEND THE RESULT TO THE USER
@@ -96,7 +100,10 @@ export const addDeleteLikes = async (req, res) => {
     });
   } catch (error) {
     console.log("Adding Like error:", error.message);
-    return res.status(500).json("Internal Server Error");
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
+    });
   }
 };
-

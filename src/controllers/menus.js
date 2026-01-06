@@ -12,6 +12,10 @@ export const getMenus = async (req, res) => {
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
+    });
   }
 };

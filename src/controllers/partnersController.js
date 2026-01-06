@@ -43,7 +43,9 @@ export const registerPartners = async (req, res) => {
   } catch (error) {
     console.log("Verifying Partner Error", error.message);
     return res.status(500).json({
-      error: "Internal server error",
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
     });
   }
 };
@@ -125,6 +127,8 @@ export const registerAdmins = async (req, res) => {
     console.log("Registering Partner Error", error.message);
     return res.status(500).json({
       error: "Internal server error",
+      success: false,
+      error: error.message,
       message: "creating partner error",
     });
   }
@@ -278,8 +282,9 @@ export const registerReviewDetails = async (req, res) => {
   } catch (error) {
     console.log("Registering Partner Error", error.message);
     return res.status(500).json({
-      error: "Internal server error",
       message: "creating partner error",
+      success: false,
+      error: error.message,
     });
   }
 };
@@ -341,7 +346,11 @@ export const getPartners = async (req, res) => {
     });
   } catch (error) {
     console.log({ error: error });
-    res.status(500).json({ success: false, error: "Internal Server Errror" });
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Getting Partners Errror",
+    });
   }
 };
 
@@ -445,6 +454,10 @@ export const updatePartnerStatus = async (req, res) => {
     }
   } catch (error) {
     console.log("Approving Partner Error:", error, message);
-    res.status(500).json("Internal Server Error");
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Updating Partner Status Error",
+    });
   }
 };

@@ -19,11 +19,12 @@ export const getLandingData = async (req, res) => {
       projects: projectsResult.rows,
       news: newsResult.rows,
     });
-  } catch (err) {
-    console.log("home data Error", err.message);
+  } catch (error) {
+    console.log("home data Error", error.message);
     return res.status(500).json({
-      error: "Internal server error",
-      message: "Error fetching home data",
+     success: false,
+      error: error.message,
+      message: "Internal Server Errror",
     });
   }
 };

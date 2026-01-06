@@ -1,7 +1,6 @@
 import db from "../database/pool.js";
 
 export const getGetInvolved = async (req, res) => {
-  
   res.json("I am getting involved");
   try {
     const [volunteersCount, partnerCountyCount, newPartnerCountThisYear] =
@@ -38,6 +37,10 @@ export const getGetInvolved = async (req, res) => {
     });
   } catch (error) {
     console.log({ error: error });
-    res.status(500).json({ success: false, error: "Internal Server Errror" });
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
+    });
   }
 };

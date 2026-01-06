@@ -42,7 +42,11 @@ export const addProjects = async (req, res) => {
     }
   } catch (error) {
     console.error("Adding Project Error:", error.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Adding Projects Errror",
+    });
   }
 };
 
@@ -93,7 +97,11 @@ export const getProjects = async (req, res) => {
       ],
     });
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Fetching All Projects Errror",
+    });
     console.log("Fetching Projects error:", error);
   }
 };
@@ -131,6 +139,10 @@ export const getSingleProject = async (req, res) => {
     return res.status(200).json(formatedProject);
   } catch (error) {
     console.log("Getting Single news Details Error:", error.message);
-    return res.status(500).json("Internal Server Error");
+    return res.status(500).json({
+      message: "Getting Single Project Error",
+      success: false,
+      error: error.message,
+    });
   }
 };

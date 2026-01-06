@@ -42,7 +42,11 @@ export const addNews = async (req, res) => {
     }
   } catch (error) {
     console.log("Adding News Error:", error.message);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
+    });
   }
 };
 
@@ -78,6 +82,10 @@ export const getnews = async (req, res) => {
   } catch (error) {
     console.log("Getting News Error:", error.message);
 
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Internal Server Errror",
+    });
   }
 };

@@ -23,7 +23,13 @@ export const getAllUsers = async (req, res) => {
     res.json(dataWithOutPassword);
   } catch (error) {
     console.log("Getting all users error:", error);
-    res.status(500).json("Internal_server_error");
+    res
+      .status(500)
+      .json({
+        success: false,
+        error: error.message,
+        message: "Getting Users Error",
+      });
   }
 };
 
@@ -100,6 +106,10 @@ export const authUser = async (req, res) => {
     // return res.status(200).json(updatedUser);
   } catch (error) {
     console.log("authenticating:", error);
-    return res.status(401).json({ error: "Invalid or expired token" });
+    return res.status(401).json({
+      success: false,
+      error: error.message,
+      message: "Invalid or expired token",
+    });
   }
 };

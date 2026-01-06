@@ -145,7 +145,8 @@ export const register = async (req, res) => {
     console.error(`Registration error: ${error.message}`);
     return res.status(500).json({
       success: false,
-      error: "Failed to create account. Please try again later.",
+       error: error.message,
+      message: "Failed to create account. Please try again later.",
     });
   }
 };
@@ -221,7 +222,8 @@ export const login = async (req, res) => {
   } catch (error) {
     console.error(`Login error: ${error.message}`);
     return res.status(500).json({
-      error: "Internal server error. Please try again later.",
+      error: error.message,
+      message: "Internal Server Error",
     });
   }
 };
