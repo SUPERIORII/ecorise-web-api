@@ -39,7 +39,10 @@ app.use(cookieParser(process.env.COOKIE_SECRET)); // SUPORT FOR PARSING AND SIGI
 app.use(express.json({ limit: "10kb" })); // PARSE JSON REQUEST BODY AND LIMIT TO 10KB
 app.use(express.urlencoded({ extended: true }));
 // DEFINE ALLOWED ORIGINS IN 2026 (Usually stored in environment variables)
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = [
+  // "http://localhost:3000",
+  "https://client-app-red-tau.vercel.app",
+];
 
 const corsOPtions = {
   origin: function (origin, callback) {
