@@ -212,3 +212,6 @@ Content-Type: application/json
 {
    "email":"adukuly471@gmail.com"
 }
+
+###
+GET http://localhost:5000/api/partners
