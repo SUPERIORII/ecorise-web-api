@@ -8,14 +8,14 @@ const isProduction = process.env.NODE_ENV === "production";
  */
 
 export const setAuthCookies = (res, accessToken) => {
+    const isProduction = process.env.NODE_ENV === "production";
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    secure: isProduction, // 🔑 Only secure in prod
+    sameSite: isProduction ? "lax" : "lax", // or "lax" works for both
     path: "/",
-    maxAge: 3600000, // LAST FOR ONE HOUR
+    maxAge: 60 * 60 * 1000, // LAST FOR ONE HOUR
   });
-  console.log("environment:", process.env.NODE_ENV, isProduction);
 };
 
 /**

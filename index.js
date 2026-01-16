@@ -29,37 +29,39 @@ import verifyCodeRoutes from "./src/routes/verifyRoutes.js";
 
 // 1. INITIALIZE CONFIGURATION
 const app = express();
+app.set("trust proxy", 1);
 const server = http.createServer(app);
 const io = initSocket(server);
 const PORT = process.env.PORT || 8000;
 
 // SECURITY AND MIDDLEWARES
 app.use(helmet()); // SET SECURITY HEADERS
-app.use(cookieParser(process.env.COOKIE_SECRET)); // SUPORT FOR PARSING AND SIGING COOKIES
-app.use(express.json({ limit: "10kb" })); // PARSE JSON REQUEST BODY AND LIMIT TO 10KB
+app.use(cookieParser()); // SUPORT FOR PARSING AND SIGING COOKIES
+app.use(express.json()); // PARSE JSON REQUEST BODY AND LIMIT TO 10KB
 app.use(express.urlencoded({ extended: true }));
 // DEFINE ALLOWED ORIGINS IN 2026 (Usually stored in environment variables)
 const allowedOrigins = [
-  // "http://localhost:3000",
-  "https://client-app-red-tau.vercel.app",
-];
+  "http://localhost:3000", 
+  "https://client-app-red-tau.vercel.app"];
 
 const corsOPtions = {
-  origin: function (origin, callback) {
-    // ALLOW REQUEST WITH NO ORIGIN (LIKE MOBILE APPS OR CURL, OR POSTMAN)
-    if (!origin) return callback(null, true);
+  // origin: function (origin, callback) {
+  //   // ALLOW REQUEST WITH NO ORIGIN (LIKE MOBILE APPS OR CURL, OR POSTMAN)
+  //   if (!origin) return callback(null, true);
 
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS Policy"));
-    }
-  },
+  //   if (allowedOrigins.indexOf(origin) !== -1) {
+  //     callback(null, true);
+  //   } else {
+  //     callback(new Error("Not allowed by CORS Policy"));
+  //   }
+  // },
+ origin: true, // ENABLED FOR ALL ORIGINS - CHANGE FOR PRODUCTION
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], //STANDARD HTTP METHODS
   allowedHeaders: ["Content-Type", "Authorization"], // ESSENTIAL FOR MODERN APIs
   credentials: true, //  REQUIRED FOR COOKIES
   optionsSuccessStatus: 200, // LAGACY BROWSER SUPPORT
 };
+
 
 // APPLY CORS TO ALL ROUTES
 app.use(cors(corsOPtions));
